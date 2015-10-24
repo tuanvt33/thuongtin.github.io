@@ -3,16 +3,37 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="A simple example of push notifications working in a Service Worker">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Push Demo</title>
-    <!-- Roboto and Roboto Condensed Fonts -->
-    <link href='//fonts.googleapis.com/css?family=Roboto:400,300,500,700|Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="styles/h5bp.css">
-    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <title>Simple Push Demo</title>
 
-    <!-- Include the Web Manifest - Contains the gcm_sender_id -->
+    <!-- Add to homescreen -->
     <link rel="manifest" href="manifest.json">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Web Starter Kit">
+    <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Web Starter Kit">
+    <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <meta name="theme-color" content="#3372DF">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <!-- Page styles -->
+    <link rel="stylesheet" href="styles/main.css">
   </head>
   <body>
 
@@ -21,38 +42,58 @@
     </header>
 
     <main>
-      <section class="button-container">
+      <div class="js-push-switch-container">
+        <label class="wsk-switch wsk-js-switch wsk-js-ripple-effect" for="enable-push">
+          <input type="checkbox" id="enable-push" class="wsk-switch__input js-enable-push" disabled />
+          <span class="wsk-switch__label">Enable Push Notifications</span>
+        </label>
+      </div>
 
-        <div class="button-group" id="notification-permission">
-          <p><span>1</span>Enable notifications</p>
-          <button disabled>Request Notifcation Permissions</button>
+      <div class="content-overlap-wrapper">
+        <div class="send-push-options js-send-push-options">
+          <p class="center">
+            <button class="xhr-button js-xhr-button wsk-button wsk-js-button wsk-button--colored wsk-js-ripple-effect">
+              Send a Push to GCM via XHR
+            </button>
+          </p>
+
+          <p class="center">OR</p>
+
+          <p>Copy and paste the following CURL command into your terminal
+          to send a push message to your browser.</p>
+          
+          <p class="center">
+            <button class="copy-curl-button js-copy-curl-button wsk-button wsk-js-button wsk-button--colored wsk-js-ripple-effect">
+              Copy CURL Command to Clipboard
+            </button>
+          </p>
+
+          <code class="curl-code-example js-curl-code"></code>
         </div>
-
-        <div class="button-group disabled" id="push-permission">
-          <p><span>2</span>Enable push for this site</p>
-          <button disabled>Request Push Permissions</button>
+        <div class="error-message-container js-error-message-container">
+          <h1 class="error-title js-error-title"></h1>
+          <p class="error-message js-error-message"></p>
         </div>
+      </div>
 
-        <div class="button-group disabled" id="request-push">
-          <p><span>3</span>Send yourself a push message</p>
-          <input type="text" class="title" placeholder="Title" />
-          <input type="text" class="message" placeholder="Message" />
-          <button disabled>Request a Push to Yourself</button>
-        </div>
-
-        <div class="button-group disabled" id="revoke-push">
-          <p><span>4</span>Disable push for this site</p>
-          <button disabled>Revoke Push Permissions</button>
-        </div>
-
-      </section>
-
-      <section class="error-container">
-        <h1 class="title">Ooops</h1>
-        <p class="message">Something went wrong</p>
-      </section>
+      <p class="center">
+        The Weather API is
+        <br />
+        <a href="https://www.yahoo.com/?ilc=401" target="_blank">
+          <img src="https://poweredby.yahoo.com/purple.png" width="134" height="29"/>
+        </a>
+      </p>
     </main>
 
+    <!-- build:js(app/) ../../scripts/main.min.js -->
+    <script src="styleguide/switch/switch.js"></script>
+    <script src="styleguide/button/button.js"></script>
+    <script src="styleguide/third_party/rAF.js"></script>
+    <script src="styleguide/ripple/ripple.js"></script>
+    <script src="scripts/ui-handler.js"></script>
     <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+
+    <!-- Built with love using Web Starter Kit -->
   </body>
 </html>
