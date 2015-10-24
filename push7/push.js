@@ -156,3 +156,7 @@ function unsubscribe() {
       });  
   });  
 }
+
+function sendSubscriptionToServer(subscription) {
+  console.log(subscription);
+}
