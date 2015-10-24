@@ -4,7 +4,7 @@
   // of push messages, we'll grab some data from  
   // an API and use it to populate a notification  
   event.waitUntil(  
-    fetch("https://thuongtin.github.io/push3/message.json").then(function(response) {  
+    fetch("http://thuongtin.github.io/push4/message.json").then(function(response) {  
       if (response.status !== 200) {  
         // Either show a message to the user explaining the error  
         // or enter a generic message and handle the
@@ -66,7 +66,7 @@ event.waitUntil(
         return client.focus();  
     }  
     if (clients.openWindow) {
-      return clients.openWindow('/');  
+      return clients.openWindow('http://vl.toimua.vn');  
     }
   })
 );
