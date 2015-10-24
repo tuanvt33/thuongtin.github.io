@@ -1,6 +1,6 @@
 (function() {
 
-  navigator.serviceWorker.register('/service-worker.js');
+  navigator.serviceWorker.register('/service-worker2.js');
 
   function subscribe() {
     navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
