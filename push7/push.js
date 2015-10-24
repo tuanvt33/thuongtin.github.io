@@ -158,5 +158,5 @@ function unsubscribe() {
 }
 
 function sendSubscriptionToServer(subscription) {
-  console.log(subscription);
+  console.log(subscription.endpoint);
 }
