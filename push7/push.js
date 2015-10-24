@@ -1,25 +1,25 @@
-(function() {
+var isPushEnabled = false;
 
-  navigator.serviceWorker.register('sw.js');
-
-  function subscribe() {
-    navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
-      serviceWorkerRegistration.pushManager.subscribe({userVisibleOnly: true}).then(function(subscription) {
-        console.log(subscription);
-        console.log(subscription.endpoint);
-
-        // we should probably change the button text
-        var theButton = document.querySelector('.the-button');
-        theButton.textContent = 'Disable Push Notifications';
-      });
-    });
-  }
-
-  // first let's add a listener to the button
-  var theButton = document.querySelector('.the-button');
-  theButton.addEventListener('click', function() {
-    subscribe();
+window.addEventListener('load', function() {  
+  var pushButton = document.querySelector('.js-push-button');  
+  pushButton.addEventListener('click', function() {  
+    if (isPushEnabled) {  
+      unsubscribe();  
+    } else {  
+      subscribe();  
+    }  
   });
+
+  // Check that service workers are supported, if so, progressively  
+  // enhance and add push messaging support, otherwise continue without it.  
+  if ('serviceWorker' in navigator) {  
+    navigator.serviceWorker.register('sw.js')  
+    .then(initialiseState);  
+  } else {  
+    console.warn('Service workers aren\'t supported in this browser.');  
+  }  
+});
+
 // Once the service worker is registered set the initial state  
 function initialiseState() {  
   // Are Notifications supported in the service worker?  
@@ -71,5 +71,3 @@ function initialiseState() {
       });  
   });  
 }
-
-})();
