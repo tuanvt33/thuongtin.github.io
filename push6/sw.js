@@ -4,7 +4,7 @@
   // of push messages, we'll grab some data from  
   // an API and use it to populate a notification  
   event.waitUntil(  
-    fetch("https://thuongtin.github.io/push5/message.json").then(function(response) {  
+    fetch("https://thuongtin.github.io/push6/message.json").then(function(response) {  
       if (response.status !== 200) {  
         // Either show a message to the user explaining the error  
         // or enter a generic message and handle the
