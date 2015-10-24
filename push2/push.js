@@ -5,6 +5,7 @@
   function subscribe() {
     navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
       serviceWorkerRegistration.pushManager.subscribe({userVisibleOnly: true}).then(function(subscription) {
+        console.log(subscription);
         console.log(subscription.endpoint);
 
         // we should probably change the button text
